@@ -1,47 +1,30 @@
-name: Update Traffic
+import json
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
+with open("rws.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
-permissions:
-  contents: write
+result = {
+    "A7": [],
+    "N33": []
+}
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
+for item in data.get("obstructions", []):
 
-    steps:
+    record = {
+        "titel": item.get("title", ""),
+        "locatie": item.get("locationText", "")
+    }
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    road = item.get("roadNumber", "")
 
-      - name: Download traffic feed
-        run: |
-          curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
+    if road == "A7":
+        result["A7"].append(record)
 
-      - name: Create traffic.json
-        run: |
-          python3 - <<'EOF'
-          import json
+    if road == "N33":
+        result["N33"].append(record)
 
-          with open("rws.json", "r", encoding="utf-8") as f:
-              data = json.load(f)
+with open("traffic.json", "w", encoding="utf-8") as f:
+    json.dump(result, f, indent=2, ensure_ascii=False)
 
-          result = {
-              "A7": [],
-              "N33": []
-          }
-
-          for item in data.get("obstructions", []):
-
-              record = {
-                  "titel": item.get("title", ""),
-                  "locatie": item.get("locationText", "")
-              }
-
-              road = item.get("roadNumber", "")
-
-              if road == "A7":
-                  result
+print(json.dumps(result, indent=2, ensure_ascii=False))
+``
