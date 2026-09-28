@@ -1,9 +1,9 @@
 name: Update Traffic
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,16 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download traffic data
-        run: |
-          curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
+      - name: Download data
+        run: curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
 
-            - name: Generate traffic.json
+      - name: Generate traffic.json
         run: |
-          python3 <<'EOF'
+          python3 - <<'EOF'
           import json
 
           with open("rws.json", "r") as f:
@@ -34,7 +33,6 @@ jobs:
           }
 
           for item in data.get("obstructions", []):
-
               row = {
                   "titel": item.get("title", ""),
                   "locatie": item.get("locationText", "")
@@ -48,30 +46,14 @@ jobs:
 
           with open("traffic.json", "w") as f:
               json.dump(result, f, indent=2)
-
           EOF
-          import json
 
-          with open("rws.json", "r") as f:
-              data = json.load(f)
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
-          result = {
-              "A7": [],
-              "N33": []
-          }
+          git add traffic.json
 
-          for item in data.get("obstructions", []):
-
-              row = {
-                  "titel": item.get("title", ""),
-                  "locatie": item.get("locationText", "")
-              }
-
-              if item.get("roadNumber") == "A7":
-                  result["A7"].append(row)
-
-              if item.get("roadNumber") == "N33":
-                  result["N33"].append(row)
-
-          with open("traffic.json", "w") as f:
-  
+          if ! git diff --cached --quiet; then
+            git commit 
