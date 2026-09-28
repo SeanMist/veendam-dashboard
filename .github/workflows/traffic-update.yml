@@ -48,12 +48,13 @@ jobs:
               json.dump(result, f, indent=2)
           EOF
 
-      - name: Commit changes
+         - name: Commit changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
           git add traffic.json
 
-          if ! git diff --cached --quiet; then
-            git commit 
+          git diff --cached --quiet || git commit -m "Update traffic data"
+          git diff --cached --quiet || git push
+`
