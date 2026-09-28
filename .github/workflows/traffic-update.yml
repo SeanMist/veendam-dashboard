@@ -13,18 +13,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download data
-        run: curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
+      - name: Download traffic feed
+        run: |
+          curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
 
-      - name: Generate traffic.json
+      - name: Create traffic.json
         run: |
           python3 - <<'EOF'
           import json
 
-          with open("rws.json", "r") as f:
+          with open("rws.json", "r", encoding="utf-8") as f:
               data = json.load(f)
 
           result = {
@@ -33,28 +35,13 @@ jobs:
           }
 
           for item in data.get("obstructions", []):
-              row = {
+
+              record = {
                   "titel": item.get("title", ""),
                   "locatie": item.get("locationText", "")
               }
 
-              if item.get("roadNumber") == "A7":
-                  result["A7"].append(row)
+              road = item.get("roadNumber", "")
 
-              if item.get("roadNumber") == "N33":
-                  result["N33"].append(row)
-
-          with open("traffic.json", "w") as f:
-              json.dump(result, f, indent=2)
-          EOF
-
-         - name: Commit changes
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-
-          git add traffic.json
-
-          git diff --cached --quiet || git commit -m "Update traffic data"
-          git diff --cached --quiet || git push
-`
+              if road == "A7":
+                  result
