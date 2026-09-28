@@ -437,19 +437,21 @@ async function loadRDW(){
 
 loadRDW();
 async function loadA7Traffic(){
- 
-const response = await fetch("traffic.json");
-const data = await response.json();
- 
-document.getElementById("trafficA7").innerHTML =
-data.A7.map(item => `
-<div>
-<strong>${item.titel}</strong><br>
-${item.locatie}
-</div>
-`).join("<br><br>");
-}
-    catch{
+
+    try{
+
+        const response = await fetch("traffic.json");
+        const data = await response.json();
+
+        document.getElementById("trafficA7").innerHTML =
+            data.A7.map(item => `
+                <div>
+                    <strong>${item.titel}</strong><br>
+                    ${item.locatie}
+                </div>
+            `).join("<br><br>");
+
+    }catch{
 
         document.getElementById("trafficA7").innerHTML =
             "❌ Verkeer niet beschikbaar";
