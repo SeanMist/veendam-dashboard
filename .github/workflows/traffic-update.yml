@@ -1,0 +1,50 @@
+name: Update Traffic
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download traffic data
+        run: |
+          curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
+
+      - name: Generate traffic.json
+        run: |
+          python3 << 'EOF'
+          import json
+
+          with open("rws.json", "r") as f:
+              data = json.load(f)
+
+          result = {
+              "A7": [],
+              "N33": []
+          }
+
+          for item in data.get("obstructions", []):
+
+              row = {
+                  "titel": item.get("title", ""),
+                  "locatie": item.get("locationText", "")
+              }
+
+              if item.get("roadNumber") == "A7":
+                  result["A7"].append(row)
+
+              if item.get("roadNumber") == "N33":
+                  result["N33"].append(row)
+
+          with open("traffic.json", "w") as f:
+  
