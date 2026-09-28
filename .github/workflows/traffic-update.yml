@@ -1,30 +1,87 @@
-import json
+name: Update Traffic
 
-with open("rws.json", "r", encoding="utf-8") as f:
-    data = json.load(f)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
 
-result = {
-    "A7": [],
-    "N33": []
-}
+permissions:
+  contents: write
 
-for item in data.get("obstructions", []):
+jobs:
+  update:
+    runs-on: ubuntu-latest
 
-    record = {
-        "titel": item.get("title", ""),
-        "locatie": item.get("locationText", "")
-    }
+    steps:
 
-    road = item.get("roadNumber", "")
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    if road == "A7":
-        result["A7"].append(record)
+      - name: Download traffic feed
+        run: |
+          curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
 
-    if road == "N33":
-        result["N33"].append(record)
+      - name: Create traffic.json
+        run: |
+          python3 - <<'EOF'
+          import json
 
-with open("traffic.json", "w", encoding="utf-8") as f:
-    json.dump(result, f, indent=2, ensure_ascii=False)
+          with open("rws.json", "r", encoding="utf-8") as f:
+              data = json.load(f)
 
-print(json.dumps(result, indent=2, ensure_ascii=False))
-``
+          result = {
+              "A7": [],
+              "N33": []
+          }
+
+          for item in data.get("obstructions", []):
+
+              record = {
+                  "titel": item.get("title", ""),
+                  "locatie": item.get("locationText", "")
+              }
+
+              road = item.get("roadNumber", "")
+
+              if road == "A7":
+                  result["A7"].append(record)
+
+              if road == "N33":
+                  result["N33"].append(record)
+
+          if len(result["A7"]) == 0:
+              result["A7"].append({
+                  "titel": "Geen actuele meldingen",
+                  "locatie": ""
+              })
+
+          if len(result["N33"]) == 0:
+              result["N33"].append({
+                  "titel": "Geen actuele meldingen",
+                  "locatie": ""
+              })
+
+          with open("traffic.json", "w", encoding="utf-8") as f:
+              json.dump(
+                  result,
+                  f,
+                  indent=2,
+                  ensure_ascii=False
+              )
+
+          print(json.dumps(result, indent=2, ensure_ascii=False))
+          EOF
+
+      - name: Commit traffic.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add traffic.json
+
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Automatic traffic update"
+            git push
+          fi
