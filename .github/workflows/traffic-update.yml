@@ -20,9 +20,36 @@ jobs:
         run: |
           curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
 
-      - name: Generate traffic.json
+            - name: Generate traffic.json
         run: |
-          python3 << 'EOF'
+          python3 <<'EOF'
+          import json
+
+          with open("rws.json", "r") as f:
+              data = json.load(f)
+
+          result = {
+              "A7": [],
+              "N33": []
+          }
+
+          for item in data.get("obstructions", []):
+
+              row = {
+                  "titel": item.get("title", ""),
+                  "locatie": item.get("locationText", "")
+              }
+
+              if item.get("roadNumber") == "A7":
+                  result["A7"].append(row)
+
+              if item.get("roadNumber") == "N33":
+                  result["N33"].append(row)
+
+          with open("traffic.json", "w") as f:
+              json.dump(result, f, indent=2)
+
+          EOF
           import json
 
           with open("rws.json", "r") as f:
