@@ -1,14 +1,30 @@
 {
   "A7": [
     {
-      "titel": "Werkzaamheden",
-      "locatie": "Zuidbroek - Groningen"
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
+    },
+    {
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
     }
   ],
   "N33": [
     {
-      "titel": "Geen bijzonderheden",
-      "locatie": ""
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Veendam (38) en Noordbroek."
+    },
+    {
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Tussen Delfzijl en Appingedam."
+    },
+    {
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Tussen Industriegebied Delfzijl en Delfzijl."
+    },
+    {
+      "titel": "Verkeersmanagement acties",
+      "locatie": "Ter hoogte van de Eelwerderbrug."
     }
   ]
 }
