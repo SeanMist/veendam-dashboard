@@ -1,0 +1,64 @@
+name: Update Traffic
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download traffic data
+        run: |
+          curl -s https://api.rwsverkeersinfo.nl/api/traffic/ > rws.json
+
+      - name: Build traffic.json
+        run: |
+          python3 << 'EOF'
+          import json
+
+          with open("rws.json") as f:
+              data = json.load(f)
+
+          a7=[]
+          n33=[]
+
+          for item in data.get("obstructions",[]):
+
+              road=item.get("roadNumber","")
+
+              record={
+                  "titel":item.get("title",""),
+                  "locatie":item.get("locationText","")
+              }
+
+              if road=="A7":
+                  a7.append(record)
+
+              if road=="N33":
+                  n33.append(record)
+
+          result={
+              "A7":a7,
+              "N33":n33
+          }
+
+          with open("traffic.json","w") as f:
+              json.dump(result,f,indent=2)
+          EOF
+
+      - name: Commit updates
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add traffic.json
+
+          git diff --cached --quiet || (
+            git commit -m "Update traffic"
+            git push
+          )
