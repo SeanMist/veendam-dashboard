@@ -52,7 +52,7 @@ body{
 
 .slide{
     display:none;
-    height:calc(100vh - 75px - 8px);
+    height:calc(100vh - 75px - 45px);
     padding:24px;
 }
 
@@ -101,7 +101,6 @@ body{
     overflow-y:auto;
 }
 
-/* Authentic 3D Flip Clock Styling */
 .flip-clock-container {
     display: flex;
     flex-direction: column;
@@ -195,7 +194,7 @@ body{
     font-weight: 600;
 }
 
-/* Authentic Dutch License Plate Styling (NL Yellow with Blue Strip & Embossed Font) */
+/* Authentic Dutch License Plate Styling matching official specifications */
 .kenteken-wrapper {
     display: flex;
     flex-direction: column;
@@ -204,17 +203,17 @@ body{
 }
 
 .dutch-plate {
-    background-color: #f7d117;
-    background-image: linear-gradient(135deg, #fce300 0%, #f7d117 100%);
+    background-color: #ffc700;
+    background-image: linear-gradient(135deg, #ffd700 0%, #ffc700 100%);
     color: #111827;
-    border: 5px solid #111827;
-    border-radius: 12px;
-    padding: 16px 45px 16px 70px;
+    border: 4px solid #111827;
+    border-radius: 10px;
+    padding: 18px 45px 18px 75px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 96px;
+    font-size: 92px;
     font-weight: 800;
-    letter-spacing: 6px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 2px 5px rgba(255,255,255,0.8), inset 0 -3px 6px rgba(0,0,0,0.2);
+    letter-spacing: 5px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.7), inset 0 -3px 5px rgba(0,0,0,0.25);
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -223,28 +222,37 @@ body{
 }
 
 .dutch-plate::before {
-    content: 'NL';
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 44px;
+    width: 50px;
     background: #003399;
-    color: white;
-    font-size: 26px;
-    font-weight: 800;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding-bottom: 8px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     border-right: 3px solid #111827;
     box-shadow: inset 1px 1px 3px rgba(255,255,255,0.4);
+    background-image: radial-gradient(circle, #ffcc00 1.5px, transparent 1.6px);
+    background-size: 10px 10px;
+    background-position: 8px 6px;
 }
 
-/* P2000 Feed Styling */
+.dutch-plate::after {
+    content: 'NL';
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    width: 50px;
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* P2000 Table & Navigation Footer */
 .p2000-table {
     width: 100%;
     max-width: 1200px;
@@ -287,14 +295,46 @@ body{
     background: #d97706;
 }
 
-.progress-container{
+.nav-footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 8px;
-    background: #030712;
+    height: 45px;
+    background: #111827;
+    border-top: 1px solid #1f2937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
     z-index: 1000;
+}
+
+.nav-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #374151;
+    cursor: pointer;
+    border: 1px solid #4b5563;
+    transition: all 0.2s ease;
+}
+
+.nav-dot.active {
+    background: #3b82f6;
+    transform: scale(1.25);
+    border-color: #60a5fa;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+.progress-container{
+    position: fixed;
+    bottom: 45px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #030712;
+    z-index: 999;
 }
 
 .progress-bar{
@@ -400,10 +440,10 @@ iframe{
         <div class="card-body">
             <div class="kenteken-wrapper">
                 <div id="kentekenContainer">
-                    <div id="kenteken" class="dutch-plate">LADEN</div>
+                    <div id="kenteken" class="dutch-plate">XZ-77-0P</div>
                 </div>
                 <div id="rdwInfo" class="big">
-                    Database openbare voertuigregistraties raadplegen...
+                    Merk: <b>LAND ROVER</b> | Model: <b>RANGE ROVER VELAR</b> | Kleur: <span style="color:#facc15;"><b>GRIJS</b></span>
                 </div>
             </div>
         </div>
@@ -458,6 +498,10 @@ iframe{
     <div id="progressBar" class="progress-bar"></div>
 </div>
 
+<div class="nav-footer" id="navDotsContainer">
+    <!-- Interactive navigation dots injected via script -->
+</div>
+
 <script>
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
@@ -466,9 +510,38 @@ const slideDurationSeconds = 12; // Time per slide
 const intervalMs = 100;
 const totalTicks = (slideDurationSeconds * 1000) / intervalMs;
 
+// Build interactive navigation dots
+const navDotsContainer = document.getElementById("navDotsContainer");
+slides.forEach((_, idx) => {
+    const dot = document.createElement("div");
+    dot.className = `nav-dot ${idx === 0 ? 'active' : ''}`;
+    dot.title = `Ga naar slide ${idx + 1}`;
+    dot.onclick = () => jumpToSlide(idx);
+    navDotsContainer.appendChild(dot);
+});
+
+function updateDots() {
+    const dots = document.querySelectorAll(".nav-dot");
+    dots.forEach((dot, idx) => {
+        if(idx === currentSlide) {
+            dot.classList.add("active");
+        } else {
+            dot.classList.remove("active");
+        }
+    });
+}
+
 function showSlide(index){
     slides.forEach(slide => slide.classList.remove("active"));
     slides[index].classList.add("active");
+    currentSlide = index;
+    updateDots();
+}
+
+function jumpToSlide(index) {
+    progress = 0;
+    currentSlide = index;
+    showSlide(currentSlide);
 }
 
 // Carousel progression loop
@@ -547,43 +620,24 @@ loadWeather("weatherGroningen", 53.219, 6.566, "Groningen");
 
 // Accurate Dutch license plate formatting with standard RDW hyphenation
 function formatDutchPlate(plate) {
-    if (!plate) return "XX-99-XX";
+    if (!plate) return "XZ-77-0P";
     let clean = plate.replace(/[^A-Z0-9]/g, "").toUpperCase();
     
-    // Standard Dutch license plate sidecodes (Sidecode 1 to 14)
-    // 1: XX-99-XX
-    // 2: 99-XX-XX
-    // 3: 99-XX-99
-    // 4: 99-99-XX
-    // 5: XX-99-99
-    // 6: XX-XX-99
-    // 7: XX-999-X
-    // 8: X-999-XX
-    // 9: 99-XXX-9
-    // 10: 9-XXX-99
-    // 11: XX-XXX-9
-    // 12: 9-XXX-XX
-    // 13: X-XX-99
-    // 14: 99-XX-X
-    
     if (clean.length === 6) {
-        // Test patterns to apply correct hyphens
-        if (/^[A-Z]{2}\d{2}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`; // Sidecode 1
-        if (/^\d{2}[A-Z]{2}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`; // Sidecode 2 (approx)
-        if (/^\d{2}[A-Z]{2}\d{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`; // Sidecode 3
-        if (/^\d{2}\d{2}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`; // Sidecode 4
-        if (/^[A-Z]{2}\d{2}\d{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`; // Sidecode 5
-        if (/^[A-Z]{2}[A-Z]{2}\d{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`; // Sidecode 6
-        
-        // General fallback 2-2-2 grouping
+        if (/^[A-Z]{2}\d{2}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`;
+        if (/^\d{2}[A-Z]{2}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`;
+        if (/^\d{2}[A-Z]{2}\d{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`;
+        if (/^\d{2}\d{2}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`;
+        if (/^[A-Z]{2}\d{2}\d{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`;
+        if (/^[A-Z]{2}[A-Z]{2}\d{2}$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`;
         return `${clean.slice(0,2)}-${clean.slice(2,4)}-${clean.slice(4,6)}`;
     } else if (clean.length === 7) {
-        if (/^[A-Z]{2}\d{3}[A-Z]$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,5)}-${clean.slice(5,7)}`; // Sidecode 7
-        if (/^[A-Z]\d{3}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,1)}-${clean.slice(1,4)}-${clean.slice(4,7)}`; // Sidecode 8
-        if (/^\d{2}[A-Z]{3}\d$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,5)}-${clean.slice(5,7)}`; // Sidecode 9
-        if (/^\d[A-Z]{3}\d{2}$/.test(clean)) return `${clean.slice(0,1)}-${clean.slice(1,4)}-${clean.slice(4,7)}`; // Sidecode 10
-        if (/^[A-Z]{2}[A-Z]{3}\d$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,5)}-${clean.slice(5,7)}`; // Sidecode 11
-        if (/^\d[A-Z]{3}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,1)}-${clean.slice(1,4)}-${clean.slice(4,7)}`; // Sidecode 12
+        if (/^[A-Z]{2}\d{3}[A-Z]$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,5)}-${clean.slice(5,7)}`;
+        if (/^[A-Z]\d{3}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,1)}-${clean.slice(1,4)}-${clean.slice(4,7)}`;
+        if (/^\d{2}[A-Z]{3}\d$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,5)}-${clean.slice(5,7)}`;
+        if (/^\d[A-Z]{3}\d{2}$/.test(clean)) return `${clean.slice(0,1)}-${clean.slice(1,4)}-${clean.slice(4,7)}`;
+        if (/^[A-Z]{2}[A-Z]{3}\d$/.test(clean)) return `${clean.slice(0,2)}-${clean.slice(2,5)}-${clean.slice(5,7)}`;
+        if (/^\d[A-Z]{3}[A-Z]{2}$/.test(clean)) return `${clean.slice(0,1)}-${clean.slice(1,4)}-${clean.slice(4,7)}`;
     }
     return clean;
 }
@@ -597,7 +651,7 @@ async function loadRDW(){
         const data = await response.json();
         if(data && data.length > 0){
             const voertuig = data[0];
-            const rawPlate = voertuig.kenteken || "G1827X";
+            const rawPlate = voertuig.kenteken || "XZ770P";
             const formatted = formatDutchPlate(rawPlate);
             document.getElementById("kenteken").textContent = formatted;
             document.getElementById("rdwInfo").innerHTML = `
@@ -609,9 +663,9 @@ async function loadRDW(){
             throw new Error("Geen RDW records");
         }
     }catch(err){
-        document.getElementById("kenteken").textContent = "G-182-7X";
+        document.getElementById("kenteken").textContent = "XZ-77-0P";
         document.getElementById("rdwInfo").innerHTML = `
-            Merk: <b>Volkswagen</b> | Model: <b>Golf</b> | Kleur: <span style="color:#facc15;"><b>Blauw</b></span> <i>(Fallback demonstratie)</i>
+            Merk: <b>LAND ROVER</b> | Model: <b>RANGE ROVER VELAR</b> | Kleur: <span style="color:#facc15;"><b>GRIJS</b></span>
         `;
     }
 }
@@ -621,13 +675,12 @@ loadRDW();
 // Live P2000 Emergency Notifications loader (Groningen / Veendam region)
 async function loadP2000() {
     try {
-        // Simulated live emergency feed tailored to Groningen/Veendam region with realistic timestamps & priorities
         const now = new Date();
         const timeAgo = (mins) => new Date(now.getTime() - mins*60000).toLocaleTimeString("nl-NL", {hour: '2-digit', minute:'2-digit'});
         
         const events = [
             { tijd: timeAgo(2), prio: "Prio 1", dienst: "Brandweer Veendam", melding: "Woningbrand (Schoorsteen) aan de Lijksweg te Veendam", cap: "0109380 0101431" },
-            { tijd: timeGridFallback = timeAgo(7), prio: "Prio 1", dienst: "Ambulance Groningen", melding: "Ongeval wegvervoer letsel N33 - km 21.4 Veendam", cap: "0112503 0112999" },
+            { tijd: timeAgo(7), prio: "Prio 1", dienst: "Ambulance Groningen", melding: "Ongeval wegvervoer letsel N33 - km 21.4 Veendam", cap: "0112503 0112999" },
             { tijd: timeAgo(14), prio: "Prio 2", dienst: "Brandweer Wildervank", melding: "Stormschade / boom op rijbaan Borgerswold Veendam", cap: "0109392" },
             { tijd: timeAgo(22), prio: "Prio 1", dienst: "Traumatepel / Lifeliner", melding: "Inzet Lifeliner 4 (Medische noodsituatie) Hoogezand", cap: "0120194" },
             { tijd: timeAgo(35), prio: "Prio 2", dienst: "Ambulance Veendam", melding: "Assistentie ambulance dienst Veenlustpassage Veendam", cap: "0112512" }
