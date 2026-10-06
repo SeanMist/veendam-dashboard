@@ -2,33 +2,17 @@
   "A7": [
     {
       "titel": "Wegwerkzaamheden",
-      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
-    },
-    {
-      "titel": "Wegwerkzaamheden",
       "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
     },
     {
-      "titel": "Rechterrijstrook afgesloten",
-      "locatie": "Ter hoogte van Tijnje (27)."
-    },
-    {
-      "titel": "Stilstaand verkeer",
-      "locatie": "Tussen Beetsterzwaag (28) en Tijnje (27)."
-    },
-    {
-      "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen Zaanstad-'t Kalf (2) en knooppunt Zaandam."
-    },
-    {
-      "titel": "Voorwerpen op de weg",
-      "locatie": "Tussen Groningen-Corpus (36a) en Hoogkerk (35)."
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
     }
   ],
   "N33": [
     {
-      "titel": "Verkeersmanagement acties",
-      "locatie": "Ter hoogte van de Eelwerderbrug."
+      "titel": "Langzaam rijdend verkeer",
+      "locatie": "Tussen Noordbroek en knooppunt Zuidbroek."
     }
   ]
 }
