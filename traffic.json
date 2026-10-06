@@ -7,36 +7,28 @@
     {
       "titel": "Wegwerkzaamheden",
       "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
+    },
+    {
+      "titel": "Rechterrijstrook afgesloten",
+      "locatie": "Ter hoogte van Tijnje (27)."
+    },
+    {
+      "titel": "Stilstaand verkeer",
+      "locatie": "Tussen Beetsterzwaag (28) en Tijnje (27)."
+    },
+    {
+      "titel": "Langzaam rijdend verkeer",
+      "locatie": "Tussen Zaanstad-'t Kalf (2) en knooppunt Zaandam."
+    },
+    {
+      "titel": "Voorwerpen op de weg",
+      "locatie": "Tussen Groningen-Corpus (36a) en Hoogkerk (35)."
     }
   ],
   "N33": [
     {
-      "titel": "Onderhoudswerkzaamheden",
-      "locatie": "Ter hoogte van Bierum."
-    },
-    {
-      "titel": "Wegwerkzaamheden",
-      "locatie": "Tussen Eemshaven en Delfzijl."
-    },
-    {
-      "titel": "Wegwerkzaamheden",
-      "locatie": "Tussen Delfzijl en Eemshaven."
-    },
-    {
-      "titel": "Onderhoudswerkzaamheden",
-      "locatie": "Tussen Delfzijl en Eemshaven."
-    },
-    {
-      "titel": "Onderhoudswerkzaamheden",
-      "locatie": "Tussen Eemshaven en Delfzijl."
-    },
-    {
-      "titel": "Rijbaan afgesloten",
-      "locatie": "Tussen Delfzijl en Eemshaven."
-    },
-    {
-      "titel": "Rijbaan afgesloten",
-      "locatie": "Tussen Eemshaven en Delfzijl."
+      "titel": "Verkeersmanagement acties",
+      "locatie": "Ter hoogte van de Eelwerderbrug."
     }
   ]
 }
