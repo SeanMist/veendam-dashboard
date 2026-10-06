@@ -7,20 +7,36 @@
     {
       "titel": "Wegwerkzaamheden",
       "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
-    },
-    {
-      "titel": "Verkeersmanagement acties",
-      "locatie": "Ter hoogte van de Kruiswaterbrug."
-    },
-    {
-      "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen Breezanddijk en Den Helder (14)."
     }
   ],
   "N33": [
     {
-      "titel": "Geen actuele meldingen",
-      "locatie": ""
+      "titel": "Onderhoudswerkzaamheden",
+      "locatie": "Ter hoogte van Bierum."
+    },
+    {
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Eemshaven en Delfzijl."
+    },
+    {
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Delfzijl en Eemshaven."
+    },
+    {
+      "titel": "Onderhoudswerkzaamheden",
+      "locatie": "Tussen Delfzijl en Eemshaven."
+    },
+    {
+      "titel": "Onderhoudswerkzaamheden",
+      "locatie": "Tussen Eemshaven en Delfzijl."
+    },
+    {
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Tussen Delfzijl en Eemshaven."
+    },
+    {
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Tussen Eemshaven en Delfzijl."
     }
   ]
 }
