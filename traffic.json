@@ -7,12 +7,20 @@
     {
       "titel": "Wegwerkzaamheden",
       "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
+    },
+    {
+      "titel": "Stilstaand verkeer",
+      "locatie": "Tussen Breezanddijk en de brug over de Lorentzsluis."
+    },
+    {
+      "titel": "Stilstaand verkeer",
+      "locatie": "Tussen Wieringerwerf (13) en de brug over Stevinsluizen."
     }
   ],
   "N33": [
     {
-      "titel": "Verkeersmanagement acties",
-      "locatie": "Ter hoogte van de Eelwerderbrug."
+      "titel": "Geen actuele meldingen",
+      "locatie": ""
     }
   ]
 }
