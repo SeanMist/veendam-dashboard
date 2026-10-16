@@ -2,19 +2,23 @@
   "A7": [
     {
       "titel": "Wegwerkzaamheden",
-      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
+      "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
     },
     {
       "titel": "Wegwerkzaamheden",
-      "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
+      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
     },
     {
       "titel": "Stilstaand verkeer",
       "locatie": "Tussen Breezanddijk en de brug over de Lorentzsluis."
     },
     {
-      "titel": "Stilstaand verkeer",
-      "locatie": "Tussen Wieringerwerf (13) en de brug over Stevinsluizen."
+      "titel": "Langzaam rijdend verkeer",
+      "locatie": "Tussen knooppunt Zaandam en Wijdewormer (3)."
+    },
+    {
+      "titel": "Langzaam rijdend verkeer",
+      "locatie": "Tussen Wijdewormer (3) en Purmerend-Zuid (4)."
     }
   ],
   "N33": [
