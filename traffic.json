@@ -2,37 +2,17 @@
   "A7": [
     {
       "titel": "Wegwerkzaamheden",
-      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
-    },
-    {
-      "titel": "Wegwerkzaamheden",
       "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
     },
     {
-      "titel": "Stilstaand verkeer",
-      "locatie": "Tussen Groningen-West (36) en de brug over het Winschoterdiep."
-    },
-    {
-      "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen A7: Groningen-West (36a) en Hoogkerk (35)."
-    },
-    {
-      "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen Hoogkerk (35) en Leek (34)."
-    },
-    {
-      "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen Zaanstad-'t Kalf (2) en Purmerend-Zuid (4)."
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
     }
   ],
   "N33": [
     {
-      "titel": "Omleiding ingesteld",
-      "locatie": "Ter hoogte van A28: Assen."
-    },
-    {
-      "titel": "Rijbaan afgesloten",
-      "locatie": "Tussen Gieterveen (35) en Bareveld (36)."
+      "titel": "Geen actuele meldingen",
+      "locatie": ""
     }
   ]
 }
