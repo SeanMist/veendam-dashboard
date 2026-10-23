@@ -7,24 +7,16 @@
     {
       "titel": "Wegwerkzaamheden",
       "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
-    },
-    {
-      "titel": "Stilstaand verkeer",
-      "locatie": "Tussen Wieringerwerf (13) en de brug over Stevinsluizen."
-    },
-    {
-      "titel": "Stilstaand verkeer",
-      "locatie": "Tussen Wijdewormer (3) en Purmerend (5)."
-    },
-    {
-      "titel": "Twee rijstroken afgesloten",
-      "locatie": "Ter hoogte van Purmerend (5)."
     }
   ],
   "N33": [
     {
-      "titel": "Geen actuele meldingen",
-      "locatie": ""
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Ter hoogte van Bierum."
+    },
+    {
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Ter hoogte van Holwierde."
     }
   ]
 }
