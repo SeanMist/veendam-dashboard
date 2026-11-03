@@ -7,12 +7,20 @@
     {
       "titel": "Wegwerkzaamheden",
       "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
+    },
+    {
+      "titel": "Verbindingsweg afgesloten",
+      "locatie": "Op de verbindingsweg van de A7 vanuit Joure naar de N31 richting Drachten."
+    },
+    {
+      "titel": "Rechterrijstrook afgesloten",
+      "locatie": "Ter hoogte van knooppunt Drachten."
     }
   ],
   "N33": [
     {
-      "titel": "Stilstaand verkeer",
-      "locatie": "Tussen Veendam-Noord (39) en knooppunt Zuidbroek."
+      "titel": "Geen actuele meldingen",
+      "locatie": ""
     }
   ]
 }
