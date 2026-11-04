@@ -2,25 +2,25 @@
   "A7": [
     {
       "titel": "Wegwerkzaamheden",
-      "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
-    },
-    {
-      "titel": "Wegwerkzaamheden",
       "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
     },
     {
-      "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen Avenhorn (7) en Purmerend (5)."
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
     },
     {
       "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen Wijdewormer (3) en knooppunt Zaandam."
+      "locatie": "Tussen Industriegebied Westpoort (34a) en Leek (34)."
+    },
+    {
+      "titel": "Langzaam rijdend verkeer",
+      "locatie": "Tussen Marum (32) en knooppunt Drachten."
     }
   ],
   "N33": [
     {
-      "titel": "Geen actuele meldingen",
-      "locatie": ""
+      "titel": "Verkeersmanagement acties",
+      "locatie": "Ter hoogte van de Eelwerderbrug."
     }
   ]
 }
