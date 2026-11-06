@@ -11,8 +11,12 @@
   ],
   "N33": [
     {
-      "titel": "Geen actuele meldingen",
-      "locatie": ""
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Tussen Appingedam en Industriegebied Delfzijl."
+    },
+    {
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Tussen Industriegebied Delfzijl en Appingedam."
     }
   ]
 }
