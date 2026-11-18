@@ -2,19 +2,23 @@
   "A7": [
     {
       "titel": "Wegwerkzaamheden",
-      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
-    },
-    {
-      "titel": "Wegwerkzaamheden",
       "locatie": "Tussen de brug over de Lorentzsluis en Kornwerderzand (14a)."
     },
     {
-      "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen Hoorn-Noord (9) en Avenhorn (7)."
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Kornwerderzand (14a) en de brug over de Lorentzsluis."
     },
     {
-      "titel": "Langzaam rijdend verkeer",
-      "locatie": "Tussen Avenhorn (7) en Purmerend-Noord (6)."
+      "titel": "Stilstaand verkeer",
+      "locatie": "Tussen A7: Hoogkerk (35) en Leek (34)."
+    },
+    {
+      "titel": "Stilstaand verkeer",
+      "locatie": "Tussen Purmerend-Noord (6) en Avenhorn (7)."
+    },
+    {
+      "titel": "Stilstaand verkeer",
+      "locatie": "Tussen Groningen-Corpus (36a) en Hoogkerk (35)."
     }
   ],
   "N33": [
