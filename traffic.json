@@ -11,8 +11,32 @@
   ],
   "N33": [
     {
-      "titel": "Geen actuele meldingen",
-      "locatie": ""
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Eemshaven en Delfzijl."
+    },
+    {
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Delfzijl en Eemshaven."
+    },
+    {
+      "titel": "Onderhoudswerkzaamheden",
+      "locatie": "Ter hoogte van Bierum."
+    },
+    {
+      "titel": "Onderhoudswerkzaamheden",
+      "locatie": "Tussen Delfzijl en Eemshaven."
+    },
+    {
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Tussen Delfzijl en Eemshaven."
+    },
+    {
+      "titel": "Onderhoudswerkzaamheden",
+      "locatie": "Tussen Eemshaven en Delfzijl."
+    },
+    {
+      "titel": "Rijbaan afgesloten",
+      "locatie": "Tussen Eemshaven en Delfzijl."
     }
   ]
 }
