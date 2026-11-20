@@ -11,8 +11,12 @@
   ],
   "N33": [
     {
-      "titel": "Geen actuele meldingen",
-      "locatie": ""
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen knooppunt Zuidbroek en Industriegebied Delfzijl."
+    },
+    {
+      "titel": "Wegwerkzaamheden",
+      "locatie": "Tussen Industriegebied Delfzijl en knooppunt Zuidbroek."
     }
   ]
 }
